@@ -1,0 +1,35 @@
+//Form style page.
+
+<% include('header') %>
+
+<h2> Fill a new entry form</h2>
+
+<form method = "post" role = "form">
+    <div class = "form-group">
+        <label for="title">Title</label>
+        <input
+        type = "text"
+        class = "form-control"
+        id = "title"
+        name = "title"
+        placeholder = "Enter Title"
+        required
+        />
+    </div>
+
+    <div class = "form-group">
+        <label for = "body">Enter Text</label>
+        <textarea
+            class = "form-control"
+            id = "body"
+            name = "body"
+            placeholder = "Express is a tool for building server-side"
+        ></textarea>
+    </div>
+
+    <div class  = "form-control">
+        <input type = "submit" value="Post entry information" class="btn btn-primary"/>
+    </div>
+</form>
+
+<% include ('footer.') %>
