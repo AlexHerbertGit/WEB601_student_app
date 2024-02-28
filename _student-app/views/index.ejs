@@ -1,0 +1,27 @@
+// Main Page content
+
+//site header
+
+<% include ('header') %>
+
+//Are there entries, then display them here.
+
+<% if (entires.length) { %>
+<%entries.forEach(function(entry) { %>
+<div class = "panel-heading">
+    <div class = "text-muted pull-right">
+        <%= entry.published %>
+    </div>
+    <%= entry.title %>
+</div>
+<div class = "panel-body">
+    <%= entry.body%>
+</div>
+
+<% }) %>
+<% } else { %>
+<a href = "/new-entry">Add information</a>
+<% } %>
+
+//display site footer
+<% include ('footer.ejs')
