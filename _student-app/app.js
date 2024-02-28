@@ -22,3 +22,13 @@ app.set("view engine", "ejs")
 //Arguments ignore encoding the url extension.
 
 app.use(bodyParser.urlencoded({extended: false}))
+
+//Render the index ejs file.
+app.get("/", (req,res) => {
+    res.render("index")
+})
+
+//If url is /new-entry 
+app.get("/new-entry", (req, res) => {
+    res.render("new-entry")
+})
