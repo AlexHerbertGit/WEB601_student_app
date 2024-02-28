@@ -23,15 +23,22 @@ app.set("view engine", "ejs")
 
 app.use(bodyParser.urlencoded({extended: false}))
 
+
 //Render the index ejs file.
-app.get("/", (req,res) => {
+app.get("/", (req,res, next) => {
     res.render("index")
 })
 
 //Renders the new-entry ejs file
 app.get("/new-entry", (req, res) => {
-    res.render("new-entry")
-})
+    if(req.url === "/") {
+        res.render("new-entry")
+    } else if (req.url === "/throw") {
+        throw new Error("Wrong Path!")
+    } else {
+        next("You didn't visit the right home page")
+    }
+});
 
 //if url is host:port/new-entry 
 app.post("/new-entry", (req, res) => {
