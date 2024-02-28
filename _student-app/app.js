@@ -28,7 +28,30 @@ app.get("/", (req,res) => {
     res.render("index")
 })
 
-//If url is /new-entry 
+//Renders the new-entry ejs file
 app.get("/new-entry", (req, res) => {
     res.render("new-entry")
+})
+
+//if url is host:port/new-entry 
+app.post("/new-entry", (req, res) => {
+    //if request body has no title or body tag
+    if(!req.body.title || !req.body.body) {
+        //respond 400 bad req and send plain text message
+        res.status(400).send("Entries must have a title and an information body. PLease provide that!")
+        //Exit handler
+        return
+    }
+    //Push new entry to entries variable.
+entries.push({
+    title: req.body.title,
+    body: req.body.body,
+    published: new Date()
+})
+res.redirect("/")
+})
+
+app.use((req,res) => {
+    //return 404!
+    res.status(400).render("404")
 })
